@@ -1,0 +1,42 @@
+body{
+    font-family: "Roboto";
+    background-color: #330832;
+}
+
+h1, p{
+    text-align: center;
+}
+
+#welcome{
+    background-color: #E6CFCF;
+    width: 45%;
+    margin-left: 27.5%;
+    padding-top: 1%;
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-bottom: 0%;
+    border: 1px solid #E6CFCF;
+    border-radius: 20px;
+    color: #330832;
+}
+#report{
+    background-color: #E6CFCF;
+    width: 45%;
+    margin-left: 27.5%;
+    padding: 1%;
+    border: 1px solid #E6CFCF;
+    border-radius: 20px;
+    margin-top: 2%;
+    color: #330832;
+}
+
+h1 {
+    background-color: #8C3F8A;
+    width: 45%;
+    margin-left: 27.5%;
+    padding: 1%;
+    border: 1px solid #E6CFCF;
+    border-radius: 20px;
+    margin-top: 2%;
+    color: #E6CFCF;
+}

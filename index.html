@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Daniel Le">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Lexend+Deca&family=Roboto">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <title>Commission</title>
+  </head>
+  <body>
+
+    <h1>Commission</h1>
+    <p id="output"></p>
+
+    <script>
+        // Initialize Variables
+        let totalCommission = 0.0;
+        let totalSales  = 0.0;
+        let totalEarning = 0.0;
+        let validDone = false;
+        let commission = 0.0;
+        let saleInput;
+        let username 
+
+        // Welcome message and get username
+        username = prompt('Welcome to the commission program. Please enter your name before you continue:');
+
+        do{
+
+            // Error message if the user hit cancel or empty string
+            if (username === null || username.trim() === ''){
+                alert('Invalid Entry. Press F5 to Try Again.');
+                break;
+            }
+            // Otherwise, display welcome message for the report
+            else{
+                console.log(username);
+            }
+            // Error message if the user hit cancel or empty string
+            saleInput = prompt('Enter the dollar amount for your sales a single sale at a time. Enter Done when you are finished.');
+            if (saleInput === null || saleInput.trim() === ''){
+                alert('Invalid Entry. Press F5 to Try Again.');
+                break;
+            }
+
+            // if it is not empty string, or user didn't hit cancel and they didn't type in done. Then add that number to totalSales
+            else if (saleInput.toLowerCase() !== 'done'){
+                if (isNaN(saleInput)){
+                    alert('Invalid Entry. Press F5 to Try Again.');
+                    break;
+                }
+                else{
+                    saleInput = parseFloat(saleInput);
+                    totalSales += saleInput;
+                }
+            }
+
+            // otherwise end the loop
+            else{
+                validDone = true;
+            }
+
+        } while (validDone === false);
+
+        // Round totalSales to 2 decimal numbers
+        totalSales = Math.round(totalSales * 100) / 100;
+
+        // Determine Commission Rate
+        if (totalSales >=1000){
+            commission = 0.15;
+        }
+        else if (totalSales >= 500){
+            commission = 0.10;
+        }
+        else if (totalSales >= 0.01){
+            commission = 0.05;
+        }
+        else{
+            commission = 0.0;
+        }
+
+        // Calculate Commission
+        totalCommission = Math.round(totalSales * commission * 100) / 100;
+
+        // Calculate Earning
+        totalEarning = totalCommission + totalSales;
+
+        // Error message if the user hit cancel or empty string
+        if (username === null || username.trim() === ''){
+            document.getElementById('output').innerHTML = 'Invalid Entry.\nPress F5 to Try Again.';
+        }
+        // Otherwise, display welcome message for the report
+        else{
+            commission = commission * 100;
+            document.getElementById('output').innerHTML = '<div id="welcome"><span>Hello '+ username + ', Here is your Weekly Commission Report.<br><br></span></div>' +
+                                                           '<div id="report"><span>Your sales total is ' + totalSales.toLocaleString('en-US', {style:"currency", currency:"USD"})+ ', so your commission rate is ' + commission.toFixed(2) + '%<br>'+
+                                                           'Your total commission is ' + totalCommission.toLocaleString('en-US', {style:"currency", currency:"USD"}) +'.<br>' +
+                                                           'Your total earnings are ' + totalEarning.toLocaleString('en-US', {style:"currency", currency:"USD"})+'</span></div>';
+        }
+    </script>
+ </body>
+</html>
