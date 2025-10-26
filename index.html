@@ -7,6 +7,7 @@
     <meta name="author" content="Daniel Le">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Lexend+Deca&family=Roboto">
     <link href="css/style.css" rel="stylesheet" type="text/css">
+    
     <title>Commission</title>
   </head>
   <body>
@@ -21,7 +22,7 @@
         let totalEarning = 0.0;
         let validDone = false;
         let commission = 0.0;
-        let saleInput;
+        let saleInput = '';
         let username 
 
         // Welcome message and get username
@@ -88,11 +89,12 @@
         totalEarning = totalCommission + totalSales;
 
         // Error message if the user hit cancel or empty string
-        if (username === null || username.trim() === ''){
-            document.getElementById('output').innerHTML = 'Invalid Entry.\nPress F5 to Try Again.';
+        if ( saleInput === null || saleInput.trim() === '' || username === null || username.trim() === ''){
+            document.getElementById('output').innerHTML = '<div id="error"><span>Invalid Entry.\nPress F5 to Try Again.</span></div>';
         }
         // Otherwise, display welcome message for the report
         else{
+            // Print report
             commission = commission * 100;
             document.getElementById('output').innerHTML = '<div id="welcome"><span>Hello '+ username + ', Here is your Weekly Commission Report.<br><br></span></div>' +
                                                            '<div id="report"><span>Your sales total is ' + totalSales.toLocaleString('en-US', {style:"currency", currency:"USD"})+ ', so your commission rate is ' + commission.toFixed(2) + '%<br>'+

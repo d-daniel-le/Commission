@@ -7,6 +7,17 @@ h1, p{
     text-align: center;
 }
 
+#error{
+    background-color: #E6CFCF;
+    width: 45%;
+    margin-left: 27.5%;
+    padding: 1%;
+    border: 1px solid #E6CFCF;
+    border-radius: 20px;
+    margin-top: 2%;
+    color: #330832;
+}
+
 #welcome{
     background-color: #E6CFCF;
     width: 45%;
